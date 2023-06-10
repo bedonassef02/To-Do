@@ -1,3 +1,5 @@
+const {CONFLICT, CREATED, OK, NOT_FOUND} = require("../../constants");
+
 class UserController {
 
     constructor(userService) {
@@ -9,9 +11,9 @@ class UserController {
         const isEmailExist = await this.userService.isEmailExist(email)
         if (!isEmailExist) {
             const user = await this.userService.create({username, email, password})
-            response.status(201).json(user)
+            response.status(CREATED).json(user)
         } else {
-            response.status(409).json({msg: "Email Already Exist"})
+            response.status(CONFLICT).json({msg: "Email Already Exist"})
         }
     }
 
@@ -19,9 +21,9 @@ class UserController {
         const {email, password} = request.body
         const user = await this.userService.login({email, password})
         if (user) {
-            response.status(200).json(user)
+            response.status(OK).json(user)
         } else {
-            response.status(404).json({msg: "Email or Password is Incorrect"})
+            response.status(NOT_FOUND).json({msg: "Email or Password is Incorrect"})
         }
     }
 }

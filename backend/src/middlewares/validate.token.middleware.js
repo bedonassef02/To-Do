@@ -1,4 +1,5 @@
 const {checkToken} = require("../services/token.service");
+const {UNAUTHORIZED} = require("../../constants");
 
 class ValidateToken {
     async checkToken(request, response, next) {
@@ -6,7 +7,7 @@ class ValidateToken {
         if (token) {
             next()
         } else {
-            response.status(401).json("You are not Authorized")
+            response.status(UNAUTHORIZED).json("You are not Authorized")
         }
     }
 
