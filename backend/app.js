@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use("/api/", require("./src/routes/user.router"))
 
 app.use("/api/lists/", require("./src/routes/list.router"))
+app.use("/api/lists/", require("./src/routes/list.items.router"))
 
 app.listen(port, () => {
     console.log(`server running on port ${port}`)

@@ -22,7 +22,7 @@ ListItem.init(
     },
     {
         sequelize,
-        modelName: 'ListItem',
+        modelName: 'ListItems',
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
